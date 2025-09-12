@@ -73,15 +73,22 @@ async def forward(self: BaseValidatorNeuron):
     bt.logging.info("Fetching OpenMeteo baseline")
     sample.output_data = self.open_meteo_loader.get_output(sample)
   
-    miner_uids = self.uid_tracker.get_random_uids(
-        k = self.config.neuron.sample_size,
-        tries = 3
-    )
+    # miner_uids = self.uid_tracker.get_random_uids(
+    #     k = self.config.neuron.sample_size,
+    #     tries = 3
+    # )
+    miner_uids = [1]
 
     axons = [self.metagraph.axons[uid] for uid in miner_uids]
     miner_hotkeys: List[str] = list([axon.hotkey for axon in axons])
 
     bt.logging.info(f"Querying {len(miner_uids)} miners..")
+
+    bt.logging.info(f"sample.get_synapse(): {sample.get_synapse()}")
+    bt.logging.info(f"sample.output_data: {sample.output_data}")
+
+    exit()
+
     start_request = time.time()
     responses = await self.dendrite(
         axons=axons,

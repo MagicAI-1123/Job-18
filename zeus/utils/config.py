@@ -71,7 +71,7 @@ def add_args(cls, parser):
     Adds relevant arguments to the parser for operation.
     """
 
-    parser.add_argument("--netuid", type=int, help="Subnet netuid", default=1)
+    parser.add_argument("--netuid", type=int, help="Subnet netuid", default=18)
 
     parser.add_argument(
         "--neuron.device",
@@ -105,7 +105,7 @@ def add_args(cls, parser):
         "--wandb.off",
         action="store_true",
         help="Turn off wandb.",
-        default=False,
+        default=True,
     )
 
     parser.add_argument(

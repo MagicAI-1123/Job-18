@@ -34,7 +34,7 @@ class OpenMeteoLoader:
             "hourly": converter.om_name,
             "start_hour": start_time.isoformat(timespec="minutes"),
             "end_hour": end_time.isoformat(timespec="minutes"),
-            "apikey": self.api_key
+            # "apikey": self.api_key
         }
 
         responses = self.open_meteo_api.weather_api(

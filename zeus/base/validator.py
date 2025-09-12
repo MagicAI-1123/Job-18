@@ -61,9 +61,9 @@ class BaseValidatorNeuron(BaseNeuron):
         # Create asyncio event loop to manage async tasks.
         self.loop = asyncio.get_event_loop()
 
-        # Dendrite lets us send messages to other nodes (axons) in the network.
-        self.dendrite = ZeusDendrite(wallet=self.wallet)
-        bt.logging.info(f"Dendrite: {self.dendrite}")
+        # # Dendrite lets us send messages to other nodes (axons) in the network.
+        # self.dendrite = ZeusDendrite(wallet=self.wallet)
+        # bt.logging.info(f"Dendrite: {self.dendrite}")
 
         # Set up initial scoring weights for validation
         bt.logging.info("Building validation weights.")
@@ -83,14 +83,14 @@ class BaseValidatorNeuron(BaseNeuron):
         self.thread: Union[threading.Thread, None] = None
         self.lock = asyncio.Lock()
 
-        # Init sync with the network. Updates the metagraph.
-        self.sync()
+        # # Init sync with the network. Updates the metagraph.
+        # self.sync()
 
-        # Serve axon to enable external connections.
-        if not self.config.neuron.axon_off:
-            self.serve_axon()
-        else:
-            bt.logging.warning("axon off, not serving ip to chain.")
+        # # Serve axon to enable external connections.
+        # if not self.config.neuron.axon_off:
+        #     self.serve_axon()
+        # else:
+        #     bt.logging.warning("axon off, not serving ip to chain.")
 
     def serve_axon(self):
         """Serve axon to enable external connections."""
@@ -141,8 +141,8 @@ class BaseValidatorNeuron(BaseNeuron):
             Exception: For unforeseen errors during the miner's operation, which are logged for diagnosis.
         """
 
-        # Check that validator is registered on the network.
-        self.sync()
+        # # Check that validator is registered on the network.
+        # self.sync()
 
         bt.logging.info(f"Validator starting at block: {self.block}")
 
@@ -158,8 +158,8 @@ class BaseValidatorNeuron(BaseNeuron):
                 if self.should_exit:
                     break
 
-                # Sync metagraph and potentially set weights.
-                self.sync()
+                # # Sync metagraph and potentially set weights.
+                # self.sync()
 
                 self.step += 1
 

@@ -39,12 +39,13 @@ from zeus.validator.constants import (
     TESTNET_UID,
 )
 
+bt.logging.set_debug(True)
 
 class Validator(BaseValidatorNeuron):
 
     def __init__(self, config=None):
         super(Validator, self).__init__(config=config)
-        self.load_state()
+        # self.load_state()
 
         load_dotenv(
             os.path.join(os.path.abspath(os.path.dirname(__file__)), "../validator.env")
@@ -150,5 +151,5 @@ class Validator(BaseValidatorNeuron):
 if __name__ == "__main__":
     with Validator() as validator:
         while not validator.should_exit:
-            bt.logging.info(f"Validator running | uid {validator.uid} | {time.time()}")
+            bt.logging.info(f"Validator running | uid {1} | {time.time()}")
             time.sleep(30)
