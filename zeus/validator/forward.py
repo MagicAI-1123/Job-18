@@ -87,7 +87,7 @@ async def forward(self: BaseValidatorNeuron):
     bt.logging.info(f"sample.get_synapse(): {sample.get_synapse()}")
     bt.logging.info(f"sample.output_data: {sample.output_data}")
 
-    exit()
+    # exit()
 
     start_request = time.time()
     responses = await self.dendrite(
